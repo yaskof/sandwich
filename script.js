@@ -56,11 +56,16 @@ function initSlider() {
     const prevBtn = document.getElementById('sliderPrev');
     const nextBtn = document.getElementById('sliderNext');
     const progressBar = document.getElementById('sliderProgress');
+    const sliderContainer = document.querySelector('.hero-slider');
 
     let currentSlide = 0;
     const slideInterval = 6000; // 6 seconds
     let autoSlideTimer;
     let progressTimer;
+
+    if (!sliderContainer || slides.length === 0) {
+        return;
+    }
 
     function showSlide(index) {
         // Remove active class from all slides and dots
@@ -142,7 +147,6 @@ function initSlider() {
     });
 
     // Pause on hover
-    const sliderContainer = document.querySelector('.hero-slider');
     sliderContainer.addEventListener('mouseenter', function () {
         clearInterval(autoSlideTimer);
         clearInterval(progressTimer);
